@@ -20,14 +20,8 @@ class AppCoordinator: Coordinator {
     }
     
     func startWeatherFlow() {
-        let coordinator = WeatherCoordinator(navigation: navigationController)
-        
-        coordinator.didFinish = {
-            let tabBarCoordinator = MainTabbarCoordinator()
-            self.window.rootViewController = tabBarCoordinator
-        }
-        
-        coordinator.start()
+        let tabBarCoordinator = MainTabbarCoordinator()
+        self.window.rootViewController = tabBarCoordinator
     }
     
     func stop() {

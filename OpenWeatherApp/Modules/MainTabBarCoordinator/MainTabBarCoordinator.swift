@@ -19,7 +19,8 @@ final class MainTabbarCoordinator: UITabBarController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setUI()
     }
     
     deinit {
@@ -76,3 +77,4 @@ final class MainTabbarCoordinator: UITabBarController {
         self.navigationController?.navigationBar.isHidden = false
     }
 }
+

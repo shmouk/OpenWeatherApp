@@ -1,48 +1,125 @@
 import UIKit
+
+typealias Handler = (() -> Void)
+typealias StringClosure = ((String) -> Void)
+typealias CheckClosure = ((String, Bool) -> Void)
+typealias RequestResult = Result<RequestSuccess, Error>
+typealias ResultClosure = (Result<RequestSuccess, Error>) -> Void
+typealias WeatherResult = (Result<WeatherData, Error>) -> Void
+typealias WeatherCompletion = (WeatherModel) -> Void
+typealias WeatherListCompletion = (([WeatherModel.Weather]) -> Void)
+typealias WeatherForecastCompletion = (([WeatherModel.Weather.Forecast]) -> Void)
+typealias ImageCompletion = (UIImage) -> Void
+
 enum RequestError: Error {
-    case noData
     case invalidRequest
     case invalidJson
-    case emptyFields
-    
+    case imvalidData
+
     var info: String {
         switch self {
-
-        case .emptyFields:
-            return "emptyFields".localized
-            
-        case .noData:
-            return "noData".localized
             
         case .invalidRequest:
-            return "invalidRequest".localized
+            "invalidRequest".localized
             
         case .invalidJson:
-            return "invalidJson".localized
+            "invalidJson".localized
+            
+        case .imvalidData:
+            "imvalidData".localized
+
         }
     }
 }
 
-enum RequestComplete {
+enum RequestSuccess {
     case successLoadData
     
     var info: String {
         switch self {
             
         case .successLoadData:
-            return "successLoadData".localized
+            "successLoadData".localized
+        }
+    }
+}
+
+enum IconForUI {
+    case add
+    case reload
+    case weatherIcon
+
+    var image: UIImage? {
+        switch self {
+       
+        case .add:
+            UIImage(systemName: "plus")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            
+        case .reload:
+            UIImage(systemName: "arrow.clockwise")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            
+        case .weatherIcon:
+            UIImage(named: "MainIcon")
         }
     }
 }
 
 enum TitleForUI {
     case undefined
-
+    case lastRequest
+    case time
+    case weather
+    case temperature
+    case forecastDays
+    case forecastHours
+    case message
+    case placeholder
+    case alert
+    case cancel
+    case confirm
+    case preferredCity
+    
     var text: String {
         switch self {
             
         case .undefined:
             "undefined"
+            
+        case .lastRequest:
+            "lastRequest".localized + ": "
+            
+        case .time:
+            "time".localized + ": "
+            
+        case .weather:
+            "weather".localized + ": "
+            
+        case .temperature:
+            "temperature".localized + ": "
+            
+        case .forecastDays:
+            "forecastDays".localized + ": "
+            
+        case .forecastHours:
+            "forecastHours".localized + ": "
+            
+        case .message:
+            "message".localized
+            
+        case .placeholder:
+            "placeholder".localized
+            
+        case .alert:
+            "alert".localized
+            
+        case .cancel:
+            "cancel".localized
+            
+        case .confirm:
+            "confirm".localized
+            
+        case .preferredCity:
+            "preferredCity".localized
         }
     }
 }

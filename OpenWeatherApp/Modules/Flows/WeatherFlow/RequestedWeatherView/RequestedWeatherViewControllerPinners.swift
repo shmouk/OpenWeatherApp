@@ -1,24 +1,10 @@
 import Foundation
 import UIKit
 
-extension WeatherViewController {
+extension RequestedWeatherViewController {
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            refreshTimeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 2),
-            refreshTimeLabel.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
-            refreshTimeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: view.frame.width / 3),
-            refreshTimeLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24)
-        ])
-        
-        NSLayoutConstraint.activate([
-            refreshTimeTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 2),
-            refreshTimeTitleLabel.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -8),
-            refreshTimeTitleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: view.frame.width / 3),
-            refreshTimeTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24)
-        ])
-        
-        NSLayoutConstraint.activate([
-            cityLabel.topAnchor.constraint(equalTo: refreshTimeLabel.bottomAnchor, constant: 12),
+            cityLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             cityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cityLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: view.frame.width / 3),
             cityLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 48)
@@ -71,35 +57,6 @@ extension WeatherViewController {
             temperatureLabel.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
             temperatureLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: view.frame.width / 3),
             temperatureLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24)
-        ])
-        
-        
-        NSLayoutConstraint.activate([
-            forecastHoursTitleLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 16),
-            forecastHoursTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            forecastHoursTitleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: view.frame.width / 3),
-            forecastHoursTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24)
-        ])
-        
-        NSLayoutConstraint.activate([
-            horizontalScrollView.topAnchor.constraint(equalTo: forecastHoursTitleLabel.bottomAnchor, constant: 4),
-            horizontalScrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            horizontalScrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            horizontalScrollView.heightAnchor.constraint(equalToConstant: 120)
-        ])
-        
-        NSLayoutConstraint.activate([
-            forecastDaysTitleLabel.topAnchor.constraint(equalTo: horizontalScrollView.bottomAnchor, constant: 8),
-            forecastDaysTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            forecastDaysTitleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: view.frame.width / 3),
-            forecastDaysTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24)
-        ])
-        
-        NSLayoutConstraint.activate([
-            verticalScrollView.topAnchor.constraint(equalTo: forecastDaysTitleLabel.bottomAnchor, constant: 4),
-            verticalScrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            verticalScrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            verticalScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

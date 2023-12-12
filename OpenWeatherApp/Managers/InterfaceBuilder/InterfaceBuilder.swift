@@ -4,32 +4,14 @@ final class InterfaceBuilder {
     static func makeScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .red
+        scrollView.backgroundColor = .blue.withAlphaComponent(0.2)
+        scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }
-    
-    static func makeStackView() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .clear
-        stackView.spacing = 10
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalCentering
-        return stackView
-    }
-    
-    static func makeTableView() -> UITableView {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
-        tableView.showsVerticalScrollIndicator = false
-        return tableView
-    }
    
-    static func makeLabel(title: TitleForUI = .undefined, font: FontForUI, textAlignment: NSTextAlignment = .left) -> UILabel {
+    static func makeLabel(title: TitleForUI = .undefined, font: FontForUI, textAlignment: NSTextAlignment = .center) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = true
@@ -69,13 +51,6 @@ final class InterfaceBuilder {
         return view
     }
     
-    static func makeCustomNavBarButton() -> UIBarButtonItem {
-        let button = UIBarButtonItem()
-        button.image = UIImage(systemName: "plus")
-        button.tintColor = UIColor(named: "TintColor")
-        return button
-    }
-    
     static func makeButton(withTitle: TitleForUI) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -111,31 +86,35 @@ final class InterfaceBuilder {
         return textField
     }
     
-    static func makeTextView() -> UITextView {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .white
-        textView.textColor = .black
-        textView.layer.borderColor = UIColor(named: "OtherColor")?.cgColor
-        textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 16
-        textView.font?.withSize(16)
-        textView.textAlignment = .left
-        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        textView.text = "inputText".localized
-        textView.isScrollEnabled = false
-        textView.layer.masksToBounds = true
-        textView.isEditable = true
-        return textView
-    }
-    
     static func makeImageView(contentMode: UIView.ContentMode = .scaleAspectFit) -> UIImageView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "MainIcon")
+        imageView.image = IconForUI.weatherIcon.image
         imageView.contentMode = contentMode
         imageView.clipsToBounds = true
         return imageView
+    }
+    static func makeRightBarButtonItem() -> UIBarButtonItem {
+        let rightButton = UIBarButtonItem()
+        rightButton.image = IconForUI.add.image
+        rightButton.style = .plain
+        return rightButton
+    }
+    
+    static func makeLeftBarButtonItem() -> UIBarButtonItem {
+        let rightButton = UIBarButtonItem()
+        rightButton.image = IconForUI.reload.image
+        rightButton.style = .plain
+        return rightButton
+    }
+    
+    static func makeActivityIndicatorView() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
+        activityIndicator.style = .large
+        activityIndicator.startAnimating()
+        return activityIndicator
     }
 }
 
